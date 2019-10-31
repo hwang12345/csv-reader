@@ -4,7 +4,7 @@ public class EmployeeManager {
 
     public void readEmployeeCSV(){
         CSVReader csvReader = new CSVReader();
-        csvReader.csgivReader("resources/EmployeeRecords.csv");
+        csvReader.csvReader("resources/EmployeeRecords.csv");
 
         csvReader.passToDAO();
     }
