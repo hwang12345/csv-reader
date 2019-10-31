@@ -14,9 +14,6 @@ import java.util.List;
 public class CSVReader {
 
     List<Employee> csvArray = new ArrayList<>();
-
-    DAO dao = new DAO();
-
     public List<Employee> csvReader(String pathToCSV) {
         String lineToRead = "";
 
@@ -58,9 +55,35 @@ public class CSVReader {
     }
 
     public void passToDAO(){
+        DAO dao = new DAO();
         dao.runInsertQuery(csvArray);
     }
 
 }
+
+//        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(pathToCSV))) {
+//                lineToRead = bufferedReader.readLine();
+//                while ((lineToRead = bufferedReader.readLine()) != null) {
+//                String[] elements = lineToRead.split(",");
+//
+//                Employee employee = new Employee(
+//                Integer.parseInt(elements[0]),
+//                elements[1], elements[2], elements[3], elements[4],
+//                elements[5],
+//                elements[6],
+//                dateFormatter(elements[7]),
+//                dateFormatter(elements[8]),
+//                Integer.parseInt(elements[9]));
+//                csvArray.add(employee);
+//
+//                }
+//                } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//                } catch (IOException e) {
+//                e.printStackTrace();
+//                }
+//
+//                return csvArray;
+//                }
 
 

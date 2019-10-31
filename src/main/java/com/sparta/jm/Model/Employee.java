@@ -2,8 +2,6 @@ package com.sparta.jm.Model;
 
 import java.time.LocalDate;
 
-// Employeegit
-
 public class Employee {
     private int employeeID;
     private String namePrefix;
