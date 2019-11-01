@@ -1,4 +1,4 @@
-package com.sparta.jm;
+package com.sparta.jm.Main;
 import com.sparta.jm.Model.EmployeeManager;
 
 public class Starter

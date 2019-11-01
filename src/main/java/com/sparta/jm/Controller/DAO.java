@@ -3,16 +3,19 @@ package com.sparta.jm.Controller;
 import com.sparta.jm.Model.Employee;
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
+
+import static java.sql.DriverManager.getConnection;
 
 public class DAO {
     private final String QUERY = "INSERT INTO Employees(emp_id, name_prefix, first_name, middle_initial, last_name, gender, email, date_of_birth, date_of_joining, salary) values (?,?,?,?,?,?,?,?,?,?)";
     private final String URL = "jdbc:mysql://localhost/Employees?user=root&password=jamesmac";
 
-    public void runInsertQuery(List<Employee> employeeList){
-        try(Connection connection = DriverManager.getConnection(URL))
+    public void runInsertQuery(HashMap<Integer,Employee> employeeList){
+        try(Connection connection = getConnection(URL))
         {
-            for(Employee employee : employeeList){
+            for(Employee employee : employeeList.values()){
                 PreparedStatement statement = connection.prepareStatement(QUERY);
                 statement.setInt(1,employee.getEmployeeID());
                 statement.setString(2,employee.getNamePrefix());
