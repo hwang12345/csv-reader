@@ -1,4 +1,6 @@
-package com.sparta.jm.Model;
+package com.sparta.jm.Controller;
+
+import com.sparta.jm.Model.CSVReader;
 
 public class EmployeeManager {
 

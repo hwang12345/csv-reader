@@ -1,5 +1,5 @@
 package com.sparta.jm.Main;
-import com.sparta.jm.Model.EmployeeManager;
+import com.sparta.jm.Controller.EmployeeManager;
 
 public class Starter
 {

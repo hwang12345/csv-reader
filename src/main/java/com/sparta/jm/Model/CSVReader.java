@@ -12,7 +12,15 @@ import java.util.HashMap;
 
 public class CSVReader {
 
-    HashMap<Integer,Employee> employeeHashMap = new HashMap<>();
+    public HashMap<Integer,Employee> employeeHashMap = new HashMap<>();
+    public HashMap<Integer,Employee> duplicatesHashMap = new HashMap<>();
+
+    Runnable csvReaderThread = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    };
 
     public void csvReader(String pathToCSV) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(pathToCSV))){
@@ -20,6 +28,7 @@ public class CSVReader {
                     .skip(1)
                     .map(line -> line.split(","))
                     .forEach(fields -> createEmployeeObject(fields));
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -37,26 +46,28 @@ public class CSVReader {
                 dateFormatter(fields[8]),
                 Integer.parseInt(fields[9]));
 
-        employeeHashMap.put(Integer.parseInt(fields[0]),employee);
+        if(employeeHashMap.containsKey(Integer.parseInt(fields[0]))){
+            duplicatesHashMap.put(Integer.parseInt(fields[0]),employee);
+        } else if(!employeeHashMap.containsKey(Integer.parseInt(fields[0]))){
+            employeeHashMap.put(Integer.parseInt(fields[0]), employee);
+        }
     }
 
     public LocalDate dateFormatter(String date){
         DateTimeFormatter source = DateTimeFormatter.ofPattern("M/d/yyyy");
         LocalDate localDate = LocalDate.parse(date, source);
 
-//        String result = DateTimeFormatter.ofPattern("M/d/yyyy").format(localDate);
-//        result = result.replaceAll("[^0-9]", "");
-//
-//        LocalDate localDateResult = LocalDate.parse(result,source);
-
         return localDate;
     }
 
     public void passToDAO(){
-        DAO dao = new DAO();
-        dao.runInsertQuery(employeeHashMap);
+        DAO dao = new DAO(employeeHashMap);
+        dao.createThreads();
     }
 
+    public HashMap<Integer,Employee> getEmployeeHashMap(){
+        return employeeHashMap;
+    }
 }
 
 //    HashMap<Integer,Employee> csvArray = new ArrayList<>();
@@ -76,7 +87,7 @@ public class CSVReader {
 //                        dateFormatter(elements[7]),
 //                        dateFormatter(elements[8]),
 //                        Integer.parseInt(elements[9]));
-//                csvArray.add(employee);
+//                csvArray.add(Integer.parseInt(elements[0]), employee);
 //
 //            }
 //        } catch (FileNotFoundException e) {
