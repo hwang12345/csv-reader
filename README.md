@@ -13,3 +13,4 @@ You'll also need to create a table in MySQL called "Employees" with the correspo
 ## Built With
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [JDBC API (javax.sql)](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/) - Database connector
+* [MySQL](https://dev.mysql.com/downloads/installer/) - Datastore
