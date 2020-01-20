@@ -6,7 +6,7 @@ The web application utilises a local MySQL database to store data. I recommend M
 
 MySQL Installer (MySQL Workbench, MySQL Server)- https://dev.mysql.com/downloads/installer/
 
-You'll need to specify the corresponding MySQL (local) database details into the DAO file (Controller package)in order to succefully connect the application with the database.
+You'll need to specify the corresponding MySQL (local) database details into the DAO file (Controller package) in order to successfully connect the application with the database.
 
 You'll also need to create a table in MySQL called "Employees" with the corresponding fields listed.
 
