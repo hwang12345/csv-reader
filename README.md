@@ -2,7 +2,7 @@
 Java application which reads and parses data from a CSV file and inserts it into a local MySQL database. Multithreaded to improve reading/inserting performance.
 
 ### Prerequisites
-The web application utilises a local MySQL database to store data. I recommend MySQL workbench -
+The web application utilises a local MySQL database to store the CSV data. I recommend MySQL workbench -
 
 MySQL Installer (MySQL Workbench, MySQL Server)- https://dev.mysql.com/downloads/installer/
 
