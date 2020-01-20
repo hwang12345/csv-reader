@@ -1,4 +1,4 @@
-# Project Title
+# employees
 
 Java application which reads and parses data from a CSV file and inserts it into a MySQL database. Multithreaded to improve reading/inserting performance.
 
